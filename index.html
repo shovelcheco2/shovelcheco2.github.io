@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body id="page-top" onload="handleTrimesterChange(0)"><a class="menu-toggle rounded" href="#"><i class="fa fa-bars"></i></a>
+    <nav class="navbar navbar-light navbar-expand" id="sidebar-wrapper">
+        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler d-none" data-bs-target="#"></button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item sidebar-brand"><a class="nav-link active js-scroll-trigger" href="#page-top">Brand</a></li>
+                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#page-top">Home</a></li>
+                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="d-flex masthead" style="background-image: url('assets/img/bg-masthead.jpg');">
+        <div class="container my-auto text-center">
+            <h1 class="mb-1" style="color: var(--bs-primary);box-shadow: 0px 0px;">Pré-natal de risco habitual</h1>
+            <h3 class="mb-5"><em style="color: var(--bs-primary);transition: color 0.3s ease-in-out;">Um guia de condutas SUS para profissionais da área de saúde</em></h3><a class="btn btn-primary fw-semibold btn-xl js-scroll-trigger" role="button" href="#about" style="height: 45px;font-size: 30px;text-align: center;padding: 20px;padding-top: 0px;">Iniciar</a>
+            <div class="overlay"></div>
+        </div>
+    </header>
+    <section id="about" class="content-section bg-light" style="margin-bottom: -30px;padding-bottom: 80px;margin-top: 20px;">
+        <div class="container text-center">
+            <div class="row" style="margin-top: -140PX;margin-bottom: 0PX;">
+                <div class="col-lg-10 mx-auto" style="margin-top: 30px;margin-bottom: -40px;">
+                    <p class="bold-text2">Inicie calculando a <span class="bold-text">Idade Gestacional</span></p>
+                    <p class="lead mb-5">É só inserir a data abaixo e clicar em calcular!</p><script>
+function calculateWeeksAndDays() {
+  // Revert other circles to original color and text color
+  document.getElementById("trimester-icon1").classList.remove("active");
+  document.getElementById("trimester-icon2").classList.remove("active");
+  document.getElementById("trimester-icon3").classList.remove("active");
+
+  var dateInput = document.getElementById("date-input").value;
+  var enteredDate = new Date(dateInput);
+  var currentDate = new Date();
+  var timeDifference = currentDate.getTime() - enteredDate.getTime();
+
+  // Check if the entered date is in the future
+  if (timeDifference < 0) {
+    alert("Data inválida!");
+    return;
+  }
+
+  // Calculate the number of weeks and days
+  var weeks = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 7));
+  var days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+
+  // Format the result
+  var weeksText = weeks === 1 ? "semana" : "semanas";
+  var daysText = days === 1 ? "dia" : "dias";
+
+  // Display the result
+  var resultElement = document.getElementById("result");
+  resultElement.innerHTML = weeks + " " + weeksText + " e " + days + " " + daysText;
+
+  // Determine the trimester based on the result
+  var trimester = "";
+  if (weeks >= 0 && weeks <= 13 && days <= 6) {
+    trimester = "1° TRIMESTRE";
+    document.getElementById("trimester-icon1").classList.add("active");
+  } else if (weeks >= 14 && weeks <= 26 && days <= 6) {
+    trimester = "2° TRIMESTRE";
+    document.getElementById("trimester-icon2").classList.add("active");
+  } else {
+    trimester = "3° TRIMESTRE";
+    document.getElementById("trimester-icon3").classList.add("active");
+  }
+
+  // Display the trimester information
+  var trimesterElement = document.getElementById("trimester");
+  trimesterElement.innerHTML = trimester;
+
+  var trimesterHeadingElement = document.getElementById("trimester-heading");
+  trimesterHeadingElement.innerHTML = trimester;
+}
+
+
+function currentDateISO() {
+  var currentDate = new Date();
+  var year = currentDate.getFullYear();
+  var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+  var day = currentDate.getDate().toString().padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+
+</script>
+<script>
+function calculateWeeksAndDays2() {
+  var dateInput = document.getElementById("date-input2").value;
+  var enteredDate = new Date(dateInput);
+  var currentDate = new Date();
+  var timeDifference = currentDate.getTime() - enteredDate.getTime();
+
+  // Check if the entered date is in the future
+  if (timeDifference < 0) {
+    alert("Data inválida!");
+    return;
+  }
+
+  var weeksInput = document.getElementById("weeks-input").value;
+  var daysInput = document.getElementById("days-input").value;
+    
+  // Set weeksInput and daysInput to 0 if empty
+  if (weeksInput.trim() === '') {
+    weeksInput = 0;
+  }
+  if (daysInput.trim() === '') {
+    daysInput = 0;
+  }
+
+  // Calculate the total number of weeks and days
+  var totalWeeks = parseInt(weeksInput) + Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 7));
+  var totalDays = parseInt(daysInput) + Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+
+  // Convert extra days to weeks if necessary
+  totalWeeks += Math.floor(totalDays / 7);
+  totalDays = totalDays % 7;
+
+  // Format the result
+  var weeksText = totalWeeks === 1 ? "semana" : "semanas";
+  var daysText = totalDays === 1 ? "dia" : "dias";
+
+  // Display the result
+  var resultElement2 = document.getElementById("resultusg");
+  resultElement2.innerHTML = totalWeeks + " " + weeksText + " e " + totalDays + " " + daysText;
+}
+
+
+    function currentDateISO() {
+        var currentDate = new Date();
+        var year = currentDate.getFullYear();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        return year + "-" + month + "-" + day;
+    }
+    const trimester1Checkbox = document.getElementById('trimester1');
+    const trimester2Checkbox = document.getElementById('trimester2');
+    const trimester3Checkbox = document.getElementById('trimester3');
+    const trimester = trimester1Checkbox.checked ? 1 : trimester2Checkbox.checked ? 2 : trimester3Checkbox.checked ? 3 : 0;
+    handleTrimesterChange(trimester);
+    
+  
+
+</script><div class="container2">
+  <label for="date-input" class="bigger-label2">D.U.M:</label>
+  <input type="date" id="date-input" max="{{ currentDateISO() }}" class="input-field">
+  <button onclick="calculateWeeksAndDays()" style="color: white;background-color: #1d809f;border-radius: 5px;font-size: 22px;">Calcular</button>
+</div>
+
+
+<div class="container">
+  <div class="container2">
+    <label for="date-input2" class="bigger-label2">USG:</label>
+    <input type="date" id="date-input2" max="{{ currentDateISO() }}" class="input-field">
+    <input type="number" id="weeks-input" placeholder="Sem." class="input-fielddw">
+    <input type="number" id="days-input" placeholder="Dias" class="input-fielddw">
+    <button onclick="calculateWeeksAndDays2()" style="color: white;background-color: #1d809f;border-radius: 5px;font-size: 22px;">Calcular</button>
+  </div>
+  <div class="container4">
+        <div>
+            <label class="form-label3" style="margin-top: -10px;">Qual o trimestre da USG?</label>
+            <input id="trimester1" type="checkbox" name="trimester" onchange="handleTrimesterChange(1)" />
+            <label for="trimester1">1°</label>
+            <input id="trimester2" type="checkbox" name="trimester" onchange="handleTrimesterChange(2)" />
+            <label for="trimester2">2°</label>
+            <input id="trimester3" type="checkbox" name="trimester" onchange="handleTrimesterChange(3)" />
+            <label for="trimester3">3°</label>
+        </div>
+  
+  </div>
+</div>
+<script>
+  function handleTrimesterChange(selectedTrimester) {
+    // Uncheck all checkboxes
+    var checkboxes = document.getElementsByName("trimester");
+    checkboxes.forEach(function(checkbox) {
+      checkbox.checked = false;
+    });
+
+    // Check the selected checkbox
+    var selectedCheckbox = document.getElementById("trimester" + selectedTrimester);
+    selectedCheckbox.checked = true;
+  }
+</script>
+<script>
+    function removePlaceholder() {
+        var dateInput = document.getElementById("date-input");
+        dateInput.removeAttribute("placeholder");
+    }
+</script>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="content-section bg-primary text-white text-center" style="margin-top: 15px;margin-bottom: 25px;">
+        <div class="container">
+<script>
+function handleTrimesterChange(trimester) {
+  const dateInput = document.getElementById("date-input2").value;
+  const weeksInput = parseInt(document.getElementById("weeks-input").value);
+  const daysInput = parseInt(document.getElementById("days-input").value);
+
+  const currentDate = new Date();
+  const selectedDate = new Date(dateInput);
+  const result1Text = document.getElementById("result").textContent;
+  const result2Text = document.getElementById("resultusg").textContent;
+
+  // Extract weeks and days from result1Text
+  const result1Weeks = parseInt(result1Text.split(" ")[0]);
+  const result1Days = parseInt(result1Text.split(" ")[3]);
+
+  // Convert result1Weeks to days
+  const result1DaysTotal = result1Weeks * 7 + result1Days;
+
+  // Extract weeks and days from result2Text
+  const result2Weeks = parseInt(result2Text.split(" ")[0]);
+  const result2Days = parseInt(result2Text.split(" ")[3]);
+
+  // Convert result2Weeks to days
+  const result2DaysTotal = result2Weeks * 7 + result2Days;
+
+  // Calculate the difference in days
+  const differenceInDays = Math.abs(result1DaysTotal - result2DaysTotal);
+    
+// Reset the CSS to default values
+document.getElementById("result").style.color = "";
+document.getElementById("resultusg").style.color = "";
+    
+  // Reset the checkboxes to ensure only one can be selected at a time
+  if (trimester === 1) {
+    document.getElementById("trimester2").checked = false;
+    document.getElementById("trimester3").checked = false;
+  } else if (trimester === 2) {
+    document.getElementById("trimester1").checked = false;
+    document.getElementById("trimester3").checked = false;
+  } else if (trimester === 3) {
+    document.getElementById("trimester1").checked = false;
+    document.getElementById("trimester2").checked = false;
+  }
+
+if (differenceInDays <= 7 && (document.getElementById("trimester1").checked || document.getElementById("trimester2").checked || document.getElementById("trimester3").checked)) {
+  document.getElementById("result").style.color = "green";
+  document.getElementById("resultusg").style.color = "";
+} else if (differenceInDays >= 8 && differenceInDays <= 14 && document.getElementById("trimester1").checked) {
+  document.getElementById("resultusg").style.color = "green";
+  document.getElementById("result").style.color = "";
+} else if (differenceInDays >= 8 && differenceInDays <= 14 && document.getElementById("trimester2").checked) {
+  document.getElementById("result").style.color = "green";
+  document.getElementById("resultusg").style.color = "";
+} else if (differenceInDays >= 8 && differenceInDays <= 14 && document.getElementById("trimester3").checked) {
+  document.getElementById("result").style.color = "green";
+  document.getElementById("resultusg").style.color = "";
+} else if (differenceInDays >= 15 && differenceInDays <= 21 && document.getElementById("trimester1").checked) {
+  document.getElementById("resultusg").style.color = "green";
+  document.getElementById("result").style.color = "";
+} else if (differenceInDays >= 15 && differenceInDays <= 21 && document.getElementById("trimester2").checked) {
+  document.getElementById("resultusg").style.color = "green";
+  document.getElementById("result").style.color = "";
+} else if (differenceInDays >= 15 && differenceInDays <= 21 && document.getElementById("trimester3").checked) {
+  document.getElementById("result").style.color = "green";
+  document.getElementById("resultusg").style.color = "";
+} else if (differenceInDays > 21 && document.getElementById("trimester3").checked) {
+  document.getElementById("resultusg").style.color = "green";
+  document.getElementById("result").style.color = "";
+} else if (differenceInDays > 21 && document.getElementById("trimester2").checked) {
+  document.getElementById("resultusg").style.color = "green";
+  document.getElementById("result").style.color = "";
+} else if (differenceInDays > 21 && document.getElementById("trimester1").checked) {
+  document.getElementById("resultusg").style.color = "green";
+  document.getElementById("result").style.color = "";
+} else {
+    // Reset the CSS to default values if none of the conditions are met
+  document.getElementById("result").style.color = "";
+  document.getElementById("resultusg").style.color = "";
+ }
+
+  // Check if no checkboxes are selected
+  const checkboxes = document.getElementsByName("trimester");
+  let noCheckboxSelected = true;
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      noCheckboxSelected = false;
+      break;
+    }
+  }
+
+  if (noCheckboxSelected) {
+    // Reset the CSS to default values if no checkboxes are selected
+    document.getElementById("result").style.color = "";
+    document.getElementById("resultusg").style.color = "";
+  }
+}
+
+function currentDateISO() {
+  var currentDate = new Date();
+  var year = currentDate.getFullYear();
+  var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+  var day = currentDate.getDate().toString().padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+</script>
+
+<div class="container3">
+  <div class="content-section-heading" style="display: flex;">
+    <div>
+      <h2 id="result" class="mb-0" style="margin-top: -80px;width: 540px;">0 semanas e 0 dias</h2>
+      <p>IG D.U.M</p>
+    </div>
+    <div>
+      <h2 id="resultusg" class="mb-0" style="margin-top: -80px;width: 540px;">0 semanas e 0 dias</h2>
+      <p>IG USG</p>
+    </div>
+  </div>
+</div>
+
+<label class="form-label2" style="margin-top: -10px;">Clique no botão correspondente!</label>
+<div class="row" style="margin-top: -30px;">
+  <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+    <a href="Tri1.html">
+    <button id="trimester-icon1" class="circle-button">
+      <span class="mx-auto service-icon rounded-circle mb-3" style="font-size: 60px;text-align: center;">1°</span>
+    </button>
+  </a>
+    <h4><strong>1° TRIMESTRE</strong></h4>
+  </div>
+  <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+    <a href="Tri2.html">
+    <button class="circle-button" id="trimester-icon2">
+      <span class="mx-auto service-icon rounded-circle mb-3" style="font-size: 60px;text-align: center;"> 2° </span>
+    </button>
+  </a>
+    <h4><strong>2° TRIMESTRE</strong></h4>
+  </div>
+  <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+    <a href="Tri3.html">
+    <button class="circle-button" id="trimester-icon3">
+      <span class="mx-auto service-icon rounded-circle mb-3" style="font-size: 60px;text-align: center;"> 3° </span>
+    </button>
+      </a>
+    <h4><strong>3° TRIMESTRE</strong></h4>
+    <div></div>
+    <p class="mb-0 text-faded"></p>
+  </div>
+  <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+    <a href="xDocs.html">
+    <button class="circle-button">
+      <span class="mx-auto service-icon rounded-circle mb-3"><i class="icon-docs"></i></span>
+    </button>
+      </a>
+    <h4><strong>Documentos</strong></h4>
+  </div>
+</div>
+</div>
+    </section>
+    <footer class="footer text-center">
+        <div class="container">
+            <ul class="list-inline mb-5">
+                <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="https://portais.univasf.edu.br/" target="_blank"><i class="icon-graduation"></i></a></li>
+                <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="https://www.instagram.com/neto_arsenio1/" target="_blank"><i class="icon-social-instagram"></i></a></li>
+                <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="https://www.instagram.com/pachecomx/" target="_blank"><i class="icon-social-instagram"></i></a></li>
+            </ul>
+            <p class="text-muted mb-0 small">Todos os direitos reservados © Arsênio Pereira e Vinicius Pacheco | 2023</p>
+        </div><a class="js-scroll-trigger scroll-to-top rounded" href="#page-top"><i class="fa fa-angle-up"></i></a>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/stylish-portfolio.js"></script>
+</body>
+
+</html>
